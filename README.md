@@ -1,6 +1,2 @@
-# PIPEX
+# PIPEX--✅100%✅
 REPLICAR EL FUNCIONAMIENTO DE LAS PIPES CON EL LENGUAJE C
-
-                        /---------/                                                                
-                       /--100%---/                                          
-                      /---------/
