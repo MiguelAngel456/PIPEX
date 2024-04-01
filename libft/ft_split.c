@@ -6,7 +6,7 @@
 /*   By: mfuente- <mfuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 13:19:50 by mfuente-          #+#    #+#             */
-/*   Updated: 2023/12/09 08:35:28 by mfuente-         ###   ########.fr       */
+/*   Updated: 2024/03/26 11:12:09 by mfuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,14 +114,14 @@ char	**ft_split(char const *s, char c)
 	return 0;
 }*/
 /*int main(void) {
-   char const *input_string = "hello";
-    char delimiter = ' ';
+   char const *input_string = "hello 'QUE TAL'";
+    char delimiter = '\'';
     char **result = ft_split(input_string, delimiter);
     if (result)
     {
         for (int i = 0; result[i] != NULL; i++)
         {
-            printf("Word %d: %s\n", i + 1, result[i]);
+            printf("Word %d: %s|\n", i + 1, result[i]);
             free(result[i]);
         }
         free(result);

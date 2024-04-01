@@ -6,17 +6,12 @@
 /*   By: mfuente- <mfuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 09:49:17 by mfuente-          #+#    #+#             */
-/*   Updated: 2024/03/13 17:35:49 by mfuente-         ###   ########.fr       */
+/*   Updated: 2024/04/01 13:07:22 by mfuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-/* void	ft_leaks(void)
-{
-	system("leaks pipex > leaks.txt");
-	//atexit(ft_leaks);
-} */
 //ERROR
 int	ft_errors(void)
 {
@@ -41,7 +36,10 @@ static int	father_child(pid_t	pid, t_pipex *str_ppx, char *index, char **env)
 	{
 		index = search_comand(str_ppx, env, str_ppx->comand_f);
 		if (index == NULL)
-			return (ft_errors());
+		{
+			ft_putendl_fd("Error, comando no encontrado", 2);
+			exit(EXIT_FAILURE);
+		}
 		process_execve(str_ppx, env, index, CHILD);
 	}
 	else
@@ -49,7 +47,10 @@ static int	father_child(pid_t	pid, t_pipex *str_ppx, char *index, char **env)
 		waitpid(pid, &str_ppx->status, 0);
 		index = search_comand(str_ppx, env, str_ppx->comand_s);
 		if (index == NULL)
-			return (ft_errors());
+		{
+			ft_putendl_fd("Error, comando no encontrado", 2);
+			exit(EXIT_FAILURE);
+		}
 		process_execve(str_ppx, env, index, FATHER);
 	}
 	return (0);
@@ -87,16 +88,15 @@ int	main(int argc, char **argv, char **env)
 		index = NULL;
 		str_ppx = start_struc(argv);
 		if (case_error(str_ppx) == 1)
-			return (ft_errors());
+			exit(EXIT_FAILURE);
 		pipe(str_ppx->fd);
 		pid = fork();
 		if (pid < 0)
 			return (ft_errors());
-		father_child(pid, str_ppx, index, env);
+		if (father_child(pid, str_ppx, index, env) == 1)
+			exit(EXIT_FAILURE);
 	}
 	else
 		return (ft_errors());
-	if (str_ppx->status > 256)
-		return (str_ppx->status / 256);
-	return (str_ppx->status);
+	exit(EXIT_SUCCESS);
 }

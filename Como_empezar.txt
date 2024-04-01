@@ -1,0 +1,40 @@
+PATH=/Users/mfuente-/.brew/bin:/Users/mfuente-/.brew/bin:/Users/mfuente-/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/dotnet:/usr/local/munki:/opt/X11/bin:/Users/mfuente-/.dotnet/tools:/Library/Apple/usr/bin:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/Users/mfuente-/.brew/bin
+
+//SEPARAR LA LINEA DE LA SIGUIENTE FORMA:
+
+/Users/mfuente-/.brew/bin
+/Users/mfuente-/.brew/bin
+/Users/mfuente-/.brew/bin
+/usr/local/bin
+/usr/bin
+/bin
+/usr/sbin
+/sbin
+/usr/local/share/dotnet
+/usr/local/munki
+/opt/X11/bin
+/Users/mfuente-/.dotnet/tools
+
+//AÑADIRLE AL FINAL DE LA LINEA EL COMANDO
+
+/Users/mfuente-/.brew/bin/ls
+/Users/mfuente-/.brew/bin/ls
+/Users/mfuente-/.brew/bin/ls
+/usr/local/bin/ls
+/usr/bin/ls
+/bin/ls
+/usr/sbin/ls
+/sbin/ls
+/usr/local/share/dotnet/ls
+/usr/local/munki/ls
+/opt/X11/bin/ls
+/Users/mfuente-/.dotnet/tools/ls
+
+
+//Lo ultimo, Comprobar si existe el comando
+int access(char *path, int mode);
+access("$PWD/outfile", F_OK);
+
+//Creo que era para ejecutar el COMANDO
+int execve(char *path, char **arg, char **env)
+execve("/bin/ls", struc_pipex->comand_f, env);

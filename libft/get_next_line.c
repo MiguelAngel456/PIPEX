@@ -6,7 +6,7 @@
 /*   By: mfuente- <mfuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 11:41:49 by mfuente-          #+#    #+#             */
-/*   Updated: 2024/01/15 11:30:09 by mfuente-         ###   ########.fr       */
+/*   Updated: 2024/03/20 09:56:38 by mfuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,14 +116,16 @@ char	*get_next_line(int fd)
     char *line;
 	int i;
 
-	i = 0;
-    while (i < 6) {
-		line = get_next_line(fd);
-        printf("Línea leída %d: %s\n", i, line);
-        free(line);
-		i++;
-    }
-    close(fd);
+//	i = 0;
+//    while (i < 6) {
+//		line = get_next_line(fd);
+//        printf("Línea leída %d: %s\n", i, line);
+//        free(line);
+//		i++;
+//    }
+ //   close(fd);
+	line = get_next_line(0);
+	printf("%s\n", line);
 
     return 0;
 } */
