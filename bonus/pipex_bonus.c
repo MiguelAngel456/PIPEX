@@ -6,7 +6,7 @@
 /*   By: mfuente- <mfuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 09:49:17 by mfuente-          #+#    #+#             */
-/*   Updated: 2024/04/01 15:08:29 by mfuente-         ###   ########.fr       */
+/*   Updated: 2024/04/02 11:19:14 by mfuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ static void	free_all(t_pipex *str_ppx)
 		i++;
 	}
 	free(str_ppx->comands);
-	free(str_ppx->here_doc);
 }
 
 static int	child(t_pipex *str_ppx, int orden, char **env, pid_t pid)
@@ -38,7 +37,8 @@ static int	child(t_pipex *str_ppx, int orden, char **env, pid_t pid)
 		{
 			return (1);
 		}
-		process_child(str_ppx, env, index, orden);
+		else
+			process_child(str_ppx, env, index, orden);
 	}
 	return (0);
 }

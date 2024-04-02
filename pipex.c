@@ -6,7 +6,7 @@
 /*   By: mfuente- <mfuente-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 09:49:17 by mfuente-          #+#    #+#             */
-/*   Updated: 2024/04/01 13:07:22 by mfuente-         ###   ########.fr       */
+/*   Updated: 2024/04/02 11:24:21 by mfuente-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ static int	father_child(pid_t	pid, t_pipex *str_ppx, char *index, char **env)
 		index = search_comand(str_ppx, env, str_ppx->comand_f);
 		if (index == NULL)
 		{
-			ft_putendl_fd("Error, comando no encontrado", 2);
-			exit(EXIT_FAILURE);
+			ft_putendl_fd ("Error, comando no encontrado", 2);
+			return (1);
 		}
 		process_execve(str_ppx, env, index, CHILD);
 	}
@@ -48,8 +48,8 @@ static int	father_child(pid_t	pid, t_pipex *str_ppx, char *index, char **env)
 		index = search_comand(str_ppx, env, str_ppx->comand_s);
 		if (index == NULL)
 		{
-			ft_putendl_fd("Error, comando no encontrado", 2);
-			exit(EXIT_FAILURE);
+			ft_putendl_fd ("Error, comando no encontrado", 2);
+			return (1);
 		}
 		process_execve(str_ppx, env, index, FATHER);
 	}
@@ -93,8 +93,7 @@ int	main(int argc, char **argv, char **env)
 		pid = fork();
 		if (pid < 0)
 			return (ft_errors());
-		if (father_child(pid, str_ppx, index, env) == 1)
-			exit(EXIT_FAILURE);
+		father_child(pid, str_ppx, index, env);
 	}
 	else
 		return (ft_errors());
